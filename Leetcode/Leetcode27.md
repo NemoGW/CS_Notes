@@ -13,4 +13,35 @@ And the constrains are:
  - 0 <= nums[i] <= 50
  - 0 <= val <= 100
 
-We can set a pointer specifically to elements that are not the same as the given value. If they are not the same, we increment the pointer, and finally, return its value.
+## Problem solving thought process
+
+1. We can set a pointer specifically to elements that are not the same as the given value.
+2. If they are not the same, we increment the pointer.
+3. Finally, return its value.
+
+## Code and Explanation
+
+```java
+if(nums[i]!=val)
+{
+    int temp = nums[count];
+    nums[count] = nums[i];
+    nums[i] = temp;
+    count++;
+}
+```
+
+```java
+public int removeElement(int[] nums, int val) {
+        int count=0;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]!=val){
+                int temp = nums[count];
+                nums[count] = nums[i];
+                nums[i] = temp;
+                count++;
+            }
+        }
+        return count;
+    }
+```
