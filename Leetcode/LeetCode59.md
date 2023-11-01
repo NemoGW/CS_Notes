@@ -47,10 +47,8 @@ and then the size shrinks.
 public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
 
-        int left = 0;
-        int up = 0;
-        int down = n-1;
-        int right = n-1;
+        int left = 0, up = 0;
+        int down = n-1, right = n-1;
 
         int count=1; 
         while(count<=n*n){
