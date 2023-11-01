@@ -31,7 +31,7 @@ And the constrains are:
 
 Keep in mind that this question is a singly linked list. So we will need more than 1 pointer for tracking the elements.
 
-The general logic is below:
+The general logic is below (remeber we cannot change the value in the node):
 
 ![Q24 Logic](assets/q24p1.png)
 
