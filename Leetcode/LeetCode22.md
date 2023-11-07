@@ -25,7 +25,7 @@ And the constrains are:
 
 ## Problem solving thought process
 
-This problem looks like a problem where we had to find all the possible solutions. Frequently, these kind of problem we can approach with the [Backtracking](Algorithms/Backtracking.md) algorithm
+This problem looks like a problem where we had to find all the possible solutions. Frequently, these kind of problem we can approach with the [Backtracking](https://github.com/NemoGW/CS_Notes/blob/main/Algorithms/Backtracking.md) algorithm
 
 Looking at the problem, we know that it will always start with '('.
 We can introduce two variables ***Left*** and ***Right*** to represent the parenthesis.
