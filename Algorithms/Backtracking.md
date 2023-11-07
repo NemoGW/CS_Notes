@@ -10,3 +10,5 @@ Here's a broad view of how backtracking works:
 4. **Backtrack**: If the current path does not lead to a solution, go back to the previous step and try another option.
 
 Backtracking reduces the brute force search by eliminating the large number of paths that lead to dead ends, thereby solving the problem more efficiently than a naive approach that tries all possibilities.
+
+![Backtracking IMG](assets/IMG_0006.png)
