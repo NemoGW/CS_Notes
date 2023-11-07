@@ -25,6 +25,14 @@ And the constrains are:
 
 ## Problem solving thought process
 
+This problem looks like a problem where we had to find all the possible solutions. Frequently, these kind of problem we can approach with the ***[Backtracking]***(..Algorithms/backtracking.md) algorithm
+
+Looking at the problem, we know that it will always start with '('.
+We can introduce two variables ***Left*** and ***Right*** to represent the parenthesis.
+
+1. If left parenthesis is < n, then we will have to add the '(', and increment the left value.
+2. If right parenthesis is < left, then we will have to add the ')' and increment the right value.
+
 ## Code and Explanation
 
 ```java
