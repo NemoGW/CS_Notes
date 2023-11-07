@@ -12,3 +12,10 @@ Here's a broad view of how backtracking works:
 Backtracking reduces the brute force search by eliminating the large number of paths that lead to dead ends, thereby solving the problem more efficiently than a naive approach that tries all possibilities.
 
 ![Backtracking IMG](assets/IMG_0006.png)
+
+Listing out all the possibilities are one of the classic usage of ***Backtracking Algorithm***.
+
+For example: ***Let N=3***
+1. Starting with 1 and order them we will have: [1,2,3] , [1,3,2].
+2. Starting with 2 and order them we will have: [2,1,3] , [2,3,1].
+3. Starting with 3 and order them we will have: [3,1,2] , [3,2,1].
