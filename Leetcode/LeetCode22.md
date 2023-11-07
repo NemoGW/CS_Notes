@@ -25,7 +25,7 @@ And the constrains are:
 
 ## Problem solving thought process
 
-This problem looks like a problem where we had to find all the possible solutions. Frequently, these kind of problem we can approach with the ***[Backtracking]***(..Algorithms/backtracking.md) algorithm
+This problem looks like a problem where we had to find all the possible solutions. Frequently, these kind of problem we can approach with the [Backtracking](..Algorithms/backtracking.md) algorithm
 
 Looking at the problem, we know that it will always start with '('.
 We can introduce two variables ***Left*** and ***Right*** to represent the parenthesis.
@@ -35,10 +35,44 @@ We can introduce two variables ***Left*** and ***Right*** to represent the paren
 
 ## Code and Explanation
 
-```java
-public ListNode removeNthFromEnd(ListNode head, int n) {
+As what we disscused before we will be using backtracking algo to approach this problem.
 
+```java
+if(left < n) {
+    backtrack(left+1, right, string + '(');
+}
+
+if(right < left){
+    backtrack(left, right+1, string + ')');
+}
+```
+
+Full code:
+
+```java
+public void helper(int n, int left, int right, List<String> list, String s){
+
+        if(s.length() == n*2){
+            list.add(s);
+            return;
+        }
+        if(left < n){
+            helper(n, left+1, right, list, s + "(");
+        }
+
+        if(right < left){
+            helper(n, left, right+1, list, s+ ")");
+        }
+    }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        helper(n, 0, 0, list, "");
+
+        return list;
     }
 ```
 
 Complexity:
+Time - 
+Space - O(n) for the best cause - considering only the recursive stack.
