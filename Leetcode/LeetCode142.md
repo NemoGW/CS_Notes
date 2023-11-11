@@ -37,10 +37,41 @@ And the constrains are:
 
 ## Problem solving thought process
 
+This problem is very similar to [Leetcode 141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/). The only difference is that, after we findout there is a loop, we need two more pointers.
+1. One pointer points at the position of where the loops begins.
+2. The second pointer starts from the beginning, and goes to the node of the first pointer.
+
 ## Code and Explanation
 
 ```java
+public ListNode detectCycle(ListNode head) {
+        ListNode node = new ListNode();
+        if(head == null){
+            return null;
+        }
 
+        node.next = head;
+
+        ListNode slow = node;
+        ListNode fast = node.next;
+
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                ListNode start = node.next;
+                ListNode meet = fast;
+                while(start!=meet){
+                    start = start.next;
+                }
+
+                return start;
+            }
+        }
+
+        return null;
+    }
 ```
 
 Complexity:
