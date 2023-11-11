@@ -2,7 +2,7 @@
 
 ## Link to the questions
 
-[Leetcode 141. Linked List Cycle]([https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/](https://leetcode.com/problems/linked-list-cycle/description/))
+[Leetcode 141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/)
 
 ## Question description
 
