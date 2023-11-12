@@ -8,7 +8,7 @@ The sub-arrays are then sorted recursively. This process is repeated until the w
 2. Partitioning: Rearrange the array so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it. After this partitioning, the pivot is in its final position.
 3. Recursively apply the above steps to the sub-array of elements with smaller values and separately to the sub-array of elements with greater values.
 
-![QuickSort IMG](/assests/QuickSort2.png)
+![QuickSort IMG](assests/QuickSort2.png)
 
 ## Quick Sort Complexity
  - Base and average time complexity - ***O(n log n)***
