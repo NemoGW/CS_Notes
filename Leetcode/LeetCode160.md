@@ -1,8 +1,8 @@
-# 160. Intersection of Two Linked Lists
+# LeetCode 160. Intersection of Two Linked Lists
 
 ## Link to the questions
 
-[Leetcode 142. Linked List Cycle II](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
+[LeetCode 160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
 
 ## Question description
 
