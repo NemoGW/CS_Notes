@@ -2,7 +2,7 @@
 
 ## Link to the questions
 
-[LeetCode 27. Remove Element](https://leetcode.com/problems/search-in-a-binary-search-tree/description/)
+[Leetcode 700. Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/description/)
 
 ## Question description
 
