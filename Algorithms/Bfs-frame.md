@@ -1,9 +1,9 @@
 # BFS Algorithm
 
-|                                             LeetCode                                             | 难度 |
-| :----------------------------------------------------------------------------------------------: | :--: |
-| [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) |  🟢  |
-|                [752. Open the Lock](https://leetcode.com/problems/open-the-lock/)                |  🟠  |
+|                                             LeetCode                                             | Level | Solution |
+| :----------------------------------------------------------------------------------------------: | :---: | -------- |
+| [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) |  🟢   |
+|                [752. Open the Lock](https://leetcode.com/problems/open-the-lock/)                |  🟠   |
 
 The core idea of BFS Algorithem is simply just imagine that there is a node, and every node has a linked to other nodes. Generally we will be using **LinkedList** data structures to perform BFS.
 
@@ -11,7 +11,7 @@ The main difference bettwen BFS and DFS is that **BFS will find the shortest pat
 
 ### Algorithm
 
-Problems involving using BFS will be some type of the following. **Asking you from a "graph", find the \***start**_ and the _**target**\* distance**.
+Problems involving using BFS will be some type of the following. **Asking you from a "graph", find the **start** and the **target** distance**.
 
 For instance:
 Walking through a maze, find the shortest path?
