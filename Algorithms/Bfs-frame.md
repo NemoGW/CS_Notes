@@ -1,8 +1,8 @@
 # BFS Algorithm
 
-|                                             LeetCode                                             | Level | Solution |
-| :----------------------------------------------------------------------------------------------: | :---: | -------- |
-| [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) |  🟢   |
+|                                             LeetCode                                             | Level | Solution                                                                                                                                       |
+| :----------------------------------------------------------------------------------------------: | :---: | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) |  🟢   | [Solution](https://github.com/NemoGW/CS_Notes/blob/main/Leetcode/DFS%20%26%20BFS/BFS-LeetCode111.md#leetcode-111-minimum-depth-of-binary-tree) |
 |                [752. Open the Lock](https://leetcode.com/problems/open-the-lock/)                |  🟠   |
 
 The core idea of BFS Algorithem is simply just imagine that there is a node, and every node has a linked to other nodes. Generally we will be using **LinkedList** data structures to perform BFS.
