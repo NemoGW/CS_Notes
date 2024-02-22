@@ -52,6 +52,7 @@ int BFS(Node start, Node target){
 ```
 
 Q: Why to use DFS in some cases but not BFS
+
 A: BFS can be use to find the shortest path, but it takes a **large space complexity** while DFS uses a less space complexity.
 
 For instance, taking a binary tree as example, a full binary tree, with N nodes. Using DFS the space complexity will be to the worst case O(logN) because it depends on the recurrsion on stacks.
