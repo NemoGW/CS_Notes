@@ -1,10 +1,10 @@
 ## Backtracking Algorithm
 
-|                            LeetCode                             | 难度 |
-| :-------------------------------------------------------------: | :--: |
-| [46. Permutations](https://leetcode.com/problems/permutations/) |  🟠  |
-|     [51. N-Queens](https://leetcode.com/problems/n-queens/)     |  🔴  |
-|  [52. N-Queens II](https://leetcode.com/problems/n-queens-ii/)  |  🔴  |
+|                            LeetCode                             | Level |                                               Solutions                                                |
+| :-------------------------------------------------------------: | :---: | :----------------------------------------------------------------------------------------------------: |
+| [46. Permutations](https://leetcode.com/problems/permutations/) |  🟠   | [Solution](https://github.com/NemoGW/CS_Notes/blob/main/Leetcode/DFS%20%26%20BFS/BT-DFS-LeetCode46.md) |
+|     [51. N-Queens](https://leetcode.com/problems/n-queens/)     |  🔴   |
+|  [52. N-Queens II](https://leetcode.com/problems/n-queens-ii/)  |  🔴   |
 
 Backtracking and DFS are the very similar algorithms. The minor difference is that Backtracking is traversing through treeNodes and DFS is traversing through Nodes.
 
