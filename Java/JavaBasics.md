@@ -22,6 +22,6 @@
    - Physically exists
    - Contains set of libraries + other files that JVM uses.
 
-<div align="center"> <img src=""/> </div><br>
+<div align="center"> <img src="https://github.com/NemoGW/CS_Notes/blob/main/Java/Assets/JRE.png"/> </div><br>
 
 3.
