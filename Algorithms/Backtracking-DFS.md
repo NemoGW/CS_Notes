@@ -20,9 +20,9 @@ Sudo Code
 
 ```java
 result = []
-void backtrack(Path, Options){
+void backtrack(Path track, Options){
     if(Ending Condition){
-        result.add(Path);
+        result.add(Path track);
         return;
     }
 
@@ -35,3 +35,15 @@ void backtrack(Path, Options){
 ```
 
 **The main idea is to make a recurrsion in the for-loop. And before the recurrsion use the option that were chosen, then after the recurrsion remove the option**
+
+Removing the option
+
+- meaning backtracking, to backtrack a tree
+
+```java
+void traverse(TreeNode root){
+    for(TreeNode child : root.children){
+        traverse(child);
+    }
+}
+```
