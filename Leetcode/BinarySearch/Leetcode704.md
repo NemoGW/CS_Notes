@@ -60,4 +60,4 @@ class Solution {
 
 Complexity:
 Time - O(log N)
-Space - O(n)
+Space - O(1)
