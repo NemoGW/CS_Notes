@@ -31,7 +31,7 @@ int binarySearch(int[] nums, int target){
 
 **One technique to use in binary search is that, don't use an else statement. Use else if and specify all the conditions**
 
-In the code reason to use `left + (right - left) / 2` and not just ``(left + right) / 2` is because to avoid left and right to be a huge number.
+In the code reason to use `left + (right - left) / 2` and not just `(left + right) / 2` is because to avoid left and right to be a huge number.
 
 ### Binary Search usage.
 
