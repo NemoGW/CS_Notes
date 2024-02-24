@@ -15,7 +15,12 @@
     - [Abstraction](#abstraction)
     - [Encapsulation](#encapsulation)
 
-    <!-- -[3. Key Word](#) - [Staic](#) - [Final](#) -->
+  - [3. Object usages](#object-usages)
+    - [General methods](#general-methods)
+    - [equals()](#equals)
+    - [hashcode()](#hashcode)
+    - [toString()](#tostring)
+    - [clone()](#clone)
 
 ## 1. Fundamental
 
@@ -222,3 +227,124 @@ void draw();
 | Default         | Y            | Y              | N                                | N               |
 | Protected       | Y            | Y              | Y                                | N               |
 | Public          | Y            | Y              | Y                                | Y               |
+
+## Object Usages
+
+### General Methods
+
+```java
+
+public native int hashCode()
+
+public boolean equals(Object obj)
+
+protected native Object clone() throws CloneNotSupportedException
+
+public String toString()
+
+public final native Class<?> getClass()
+
+protected void finalize() throws Throwable {}
+
+public final native void notify()
+
+public final native void notifyAll()
+
+public final native void wait(long timeout) throws InterruptedException
+
+public final void wait(long timeout, int nanos) throws InterruptedException
+
+public final void wait() throws InterruptedException
+```
+
+### equals()
+
+**1. equals relation**
+The equals() method compares two strings, and returns true if the strings are equal, and false if not.
+
+For two objects to have an equivalence relationship, the following five conditions need to be met:
+
+1. Compare to self
+
+```java
+x.equals(x); //true
+```
+
+2. Compare to eachother
+
+```java
+x.equals(y) == y.equals(x); //true
+```
+
+3.Transitivity
+
+```java
+if (x.equals(y) && y.equals(z))
+    x.equals(z); // true;
+```
+
+4. Consistency
+   output will be the same no matter how many times equals are used.
+
+```java
+x.equals(y) == y.equals(x);
+```
+
+5. Compare to null
+   when comparing non-null to null, it should always be false
+
+```java
+x.equals(null); //false
+```
+
+**2. == vs equals()**
+
+- for regular variables, == compares if two variables are equal. No equals()
+- for reference types, == compares if they are the same reference. equals() determine whether the referenced objects are equivalent.
+
+```java
+Integer x = new Integer(1);
+Integer y = new Integer(1);
+System.out.println(x.equals(y)); // true
+System.out.println(x == y);      // false
+```
+
+**3. Implementation**
+
+- Check whether it is a reference to the same object, if so, return **_true_**
+- Check whether they are of the same type, if not, return **_false_**
+- Transform the Object object;
+- Determine whether each key field is equal.
+
+```java
+public class EqualExample {
+
+    private int x;
+    private int y;
+    private int z;
+
+    public EqualExample(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EqualExample that = (EqualExample) o;
+
+        if (x != that.x) return false;
+        if (y != that.y) return false;
+        return z == that.z;
+    }
+}
+```
+
+### hashCode()
+
+### toString()
+
+### clone()
