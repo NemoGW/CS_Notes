@@ -143,9 +143,53 @@ Key to remeber:
 
 Types:
 
-1. Complie-Time Polymorphism (Static Binding or Method Overloading).
-   - Overloading: Multiple method having the \*\*same name di
+1. Complie-Time Polymorphism (Static Binding or Method Overloading). - Overloading: Multiple method having the **same name different parameters**
+
+2.Runtime polymorphism - Overriding: **same name, same return, same parameter but different class**
 
 ### Abstraction
+
+There are two ways to achieve abstraction in java
+
+1. Abstract class (0 to 100%)
+2. Interface (100%)
+
+**Abstract Class**
+It can have abstract and non-abstract methods. It needs to be extended and its method implemented. It cannot be instantiated.
+
+- An abstract class must be declared with an abstract keyword.
+- It can have abstract and non-abstract methods.
+- It cannot be instantiated.
+- It can have constructors and static methods also.
+- It can have final methods which will force the subclass not to change the body of the method.
+
+**Interface**
+There are mainly three reasons to use interface. They are given below.
+
+1. It is used to achieve abstraction.
+2. By interface, we can support the functionality of multiple inheritance.
+3. It can be used to achieve loose coupling.
+
+|Abstract class |Interface|
+|Abstract class can have abstract and non-abstract methods. |Interface can have only abstract methods. Since Java 8, it can have default and static methods also.|
+|Abstract class doesn't support multiple inheritance. |Interface supports multiple inheritance.|
+|Abstract class can have final, non-final, static and non-static variables. |Interface has only static and final variables.|
+|Abstract class can provide the implementation of interface. |Interface can't provide the implementation of abstract class.|
+|The abstract keyword is used to declare abstract class. |The interface keyword is used to declare interface.|
+|An abstract class can extend another Java class and implement multiple Java interfaces. |An interface can extend another Java interface only.|
+|An abstract class can be extended using keyword "extends". |An interface can be implemented using keyword "implements".|
+|A Java abstract class can have class members like private, protected, etc. Members of a Java |interface are public by default.|
+
+Example:
+
+````java
+public abstract class Shape{
+public abstract void draw();
+}
+```java
+public interface Drawable{
+void draw();
+}
+````
 
 ### Encapsulation
