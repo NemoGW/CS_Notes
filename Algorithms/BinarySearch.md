@@ -2,8 +2,8 @@
 
 |                                                                   LeetCode                                                                        | Level | Solution |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---: | :---: |
-| [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) |  🟠   | Solution |
-|                                          [704. Binary Search](https://leetcode.com/problems/binary-search/)                                           |  🟢   | [Solution](https://github.com/NemoGW/CS_Notes/blob/main/Leetcode/BinarySearch/)|
+| [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) |  🟠   | [Solution](https://github.com/NemoGW/CS_Notes/blob/main/Leetcode/BinarySearch/LeetCode34.md) |
+|                                          [704. Binary Search](https://leetcode.com/problems/binary-search/)                                           |  🟢   | [Solution](https://github.com/NemoGW/CS_Notes/blob/main/Leetcode/BinarySearch/Leetcode704.md)|
 
 Binary Search is searching algorithm where if you have n numbers. You do n/2 and /2 of each half until you find the number you are seaching for.
 Time Complexity O(log n). **The list of n has to be sorted**
