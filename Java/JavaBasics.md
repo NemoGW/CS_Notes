@@ -163,6 +163,10 @@ It can have abstract and non-abstract methods. It needs to be extended and its m
 - It can have constructors and static methods also.
 - It can have final methods which will force the subclass not to change the body of the method.
 
+**Both abstract classes and abstract methods are declared using the abstract keyword. If a class contains abstract methods, the class must be declared abstract.**
+
+**The biggest difference between abstract classes and intereface is that abstract classes cannot be instantiated and can only be inherited.**
+
 **Interface**
 There are mainly three reasons to use interface. They are given below.
 
@@ -196,3 +200,25 @@ void draw();
 ```
 
 ### Encapsulation
+
+**package**
+
+1. Java package is used to categorize the classes and interfaces so that they can be easily maintained.
+
+2. Java package provides access protection.
+
+3. Java package removes naming collision.
+
+**Access Modifier**
+
+1. Private: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
+2. Default: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+3. Protected: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+4. Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+
+| Access Modifier | within class | within package | outside package by subclass only | outside package |
+| --------------- | ------------ | -------------- | -------------------------------- | --------------- |
+| Private         | Y            | N              | N                                | N               |
+| Default         | Y            | Y              | N                                | N               |
+| Protected       | Y            | Y              | Y                                | N               |
+| Public          | Y            | Y              | Y                                | Y               |
