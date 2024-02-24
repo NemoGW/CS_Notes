@@ -1,11 +1,21 @@
 # Java Basics
 
 - [Java Basics](#java-basics)
+
   - [1. Fundamental](#1-fundamental)
     - [JDK, JRE and JVM](#jdk-jre-and-jvm)
     - [Java Variables](#java-variables)
     - [Data Types](#data-types)
     - [Wrappers](#wrappers)
+  - [2. OOP Concept](#2-oop-concept)
+
+    - [Object and Class](#object-and-class)
+    - [Inheritance](#inheritance)
+    - [Polymorphism](#polymorphism)
+    - [Abstraction](#abstraction)
+    - [Encapsulation](#encapsulation)
+
+    <!-- -[3. Key Word](#) - [Staic](#) - [Final](#) -->
 
 ## 1. Fundamental
 
@@ -104,3 +114,38 @@ int y = x; //unboxing - X.intValue();
 ```
 
 ###
+
+## 2. OOP Concept
+
+### Object and Class
+
+Object is an instance of a class
+
+- real-world entity
+- runtime entity
+- entity which has state and behavior
+
+### Inheritance
+
+Parent to Child relationship.
+
+- Superclass & subclasses
+- uses **extends** key word
+  - e.g. `class Subclass extends Superclass{}`
+
+Key to remeber:
+
+1. Method Overriding - when subclass has a method with same name & return type & parameter as method in the superclass. Allows submethod to have implementation of a method that is already provided by its super class.
+2. Access Modifier - **protected** in superclass can be accessed by the subclass. **private** cannot be directly accessed.
+3. 'super' keyword - used to call the superclass's method and constructor.
+
+### Polymorphism
+
+Types:
+
+1. Complie-Time Polymorphism (Static Binding or Method Overloading).
+   - Overloading: Multiple method having the \*\*same name di
+
+### Abstraction
+
+### Encapsulation
