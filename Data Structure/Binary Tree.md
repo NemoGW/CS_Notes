@@ -1,5 +1,11 @@
 ## Binary Tree
 
+|                                               LeetCode                                               | Level | Solution |
+| :--------------------------------------------------------------------------------------------------: | :---: | :------: |
+|   [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)   |  🟢   |          |
+| [144. Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) |  🟢   |          |
+|        [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)        |  🟢   |          |
+
 ### Binary Tree Sudo code
 
 Let's start with the sudo code for binary tree
@@ -82,3 +88,122 @@ Binary Tree usually have two solving algo
 
 1. Recurrsion (Backtracking Algo)
 2. Dynamic Programming (Separating trees into smaller nodes) Algo
+
+For example: The Preorder Traversal
+
+```java
+List<Integer> res = new LinkedList<>();
+
+//return the result
+public List<Integer> preOrderTraverse(TreeNode root){
+    traverse(root);
+    return res;
+}
+
+//traverse through BT
+public void traverse(TreeNode root){
+    if(root == null) return;
+
+    res.add(root.val);
+    traverse(root.left);
+    traverse(root.right);
+}
+```
+
+Now using dynamic (breaking in to parts of trees.)
+We know that, for preorder it is - root, left, right nodes.
+Therefore, breaking down the problem, the preoder will be:
+**preorder = root + preorder for left tree + preorder for right tree**
+
+```java
+List<Integer> preorderTraverse(TreeNode root) {
+    List<Integer> res = new LinkedList<>();
+    if (root == null) {
+        return res;
+    }
+    //preorder results, so adding at this position
+    res.add(root.val);
+
+    res.addAll(preorderTraverse(root.left));
+
+    res.addAll(preorderTraverse(root.right));
+    return res;
+}
+```
+
+**One important thing about the preorder VS postorder**
+
+1. Preorder can only obtain the data passed by the parent node from the parameters.
+2. Postorder can not only obtain the data but also obtain the data passed back by the subtree through the function return value.
+
+For example: Getting the longest diameter of a binary tree
+
+Using preorder:
+
+```java
+class Solution {
+    int maxDiameter = 0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        // calcuate max diameter for everynode
+        traverse(root);
+        return maxDiameter;
+    }
+
+    void traverse(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        // calcuate diameter for everynode
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        int myDiameter = leftMax + rightMax;
+        // upodating
+        maxDiameter = Math.max(maxDiameter, myDiameter);
+
+        traverse(root.left);
+        traverse(root.right);
+    }
+
+    // max depth
+    int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        return 1 + Math.max(leftMax, rightMax);
+    }
+}
+```
+
+The worst case will be O(N^2). Because we will need maxDept at every node to calculate the max depth.
+
+But using postorder:
+
+```java
+class Solution {
+    int maxDiameter = 0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        maxDepth(root);
+        return maxDiameter;
+    }
+
+    int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        // postorder position
+        int myDiameter = leftMax + rightMax;
+        maxDiameter = Math.max(maxDiameter, myDiameter);
+
+        //postorder position
+        return 1 + Math.max(leftMax, rightMax);
+    }
+}
+```
+
+returns O(N) complexity.
