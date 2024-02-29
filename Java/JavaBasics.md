@@ -8,13 +8,11 @@
     - [Data Types](#data-types)
     - [Wrappers](#wrappers)
   - [2. OOP Concept](#2-oop-concept)
-
     - [Object and Class](#object-and-class)
     - [Inheritance](#inheritance)
     - [Polymorphism](#polymorphism)
     - [Abstraction](#abstraction)
     - [Encapsulation](#encapsulation)
-
   - [3. Object usages](#object-usages)
     - [General methods](#general-methods)
     - [equals()](#equals)
@@ -118,8 +116,6 @@ Integer x = 1; //autoboxing - Integer.valueOf(2)
 int y = x; //unboxing - X.intValue();
 ```
 
-###
-
 ## 2. OOP Concept
 
 ### Object and Class
@@ -150,7 +146,7 @@ Types:
 
 1. Complie-Time Polymorphism (Static Binding or Method Overloading). - Overloading: Multiple method having the **same name different parameters**
 
-2.Runtime polymorphism - Overriding: **same name, same return, same parameter but different class**
+2. Runtime polymorphism - Overriding: **same name, same return, same parameter but different class**
 
 ### Abstraction
 
@@ -203,6 +199,31 @@ public interface Drawable{
 void draw();
 }
 ```
+
+**1. Comparing Two**
+
+- Abstraction provides a IS-A relationship. Where the subclass object able to replace all parent class objects. Where Intereface provides LIKE-A relationship where it only provides a method to implement.
+
+- Class can implement multiple interfaces, but cannot inherit multiple abstract classes.
+
+- Interefaces fields can only be static and final type, abstraction has no restrictions.
+
+- Members of an interface can only be public, abstraction have multiple access rights.
+
+**2. When to use Witch?**
+
+Using Interface:
+
+- Want some not-related class to preform a certain action. E.g unrelated classes can implement compareTo() method in the Comparable interface;
+- Needed to use multiple inheritance.
+
+Using Abstraction:
+
+- Code needs to shared among serveral related classes.
+- Need to be able to control access to inherited memebers rather than all being public
+- Non-static and non-const(non-final) fields need to be inherited.
+
+**In many cases, interfaces take precedence over abstract classes. Because interfaces do not have the strict class hierarchy requirements of abstract classes, they can flexibly add behavior to a class. And starting from Java 8, interfaces can also have default method implementations, making the cost of modifying the interface very low.**
 
 ### Encapsulation
 
@@ -345,6 +366,180 @@ public class EqualExample {
 
 ### hashCode()
 
+Returns a hashCode() of the object.
+
+- equals() also checks if their hashCode() is the same.
+- Java collections like HashSet, HashMap also utilizes hashCode() to determine the location of storage.
+
+EqualExample does not have hashCode() method, resulting inserting two EqualExample object because their hashcode are not the same.
+
+```java
+EqualExample e1 = new EqualExample(1, 1, 1);
+EqualExample e2 = new EqualExample(1, 1, 1);
+System.out.println(e1.equals(e2)); // true
+HashSet<EqualExample> set = new HashSet<>();
+set.add(e1);
+set.add(e2);
+System.out.println(set.size());   // 2
+```
+
 ### toString()
 
+Returns the String representation of the object.
+By default, the form ToStringExample@4554617c is returned, where the value after @ is the unsigned hexadecimal representation of the hash code.
+
+Without overriding.
+
+```java
+ public static void main(String args[]){
+   Student s1=new Student(101,"Raj","lucknow");
+   Student s2=new Student(102,"Vijay","ghaziabad");
+
+   System.out.println(s1);//compiler writes here s1.toString()
+   System.out.println(s2);//compiler writes here s2.toString()
+ }
+}
+
+/**
+ * Output
+ *
+ * Student@1fee6fc
+ * Student@1eed786
+ *
+ **/
+
+```
+
+with overriding - we can return values of the object
+
+```java
+ public String toString(){//overriding the toString() method
+  return rollno+" "+name+" "+city;
+ }
+ public static void main(String args[]){
+   Student s1=new Student(101,"Raj","lucknow");
+   Student s2=new Student(102,"Vijay","ghaziabad");
+
+   System.out.println(s1);//compiler writes here s1.toString()
+   System.out.println(s2);//compiler writes here s2.toString()
+ }
+}
+
+/**
+ * output
+ *
+ * 101 Raj lucknow
+ * 102 Vijay ghaziabad
+ *
+ * */
+```
+
 ### clone()
+
+The clone() method saves the extra processing task for creating the exact copy of an object.
+
+- clone() is a protected method of Object. It is not public. If a class does not explicitly override clone(), other classes cannot directly call the clone() method of the class instance.
+
+```java
+public class CloneExample implements Cloneable {
+    private int a;
+    private int b;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+```
+
+**Shallow copy vs Deep Copy**
+
+**1. Shallow copy**
+When we do a copy of some entity to create two or more than two entities such that **changes in one entity are reflected in the other entities** as well, then we can say we have done a shallow copy.
+
+```java
+public class ShallowCloneExample implements Cloneable {
+
+    private int[] arr;
+
+    public ShallowCloneExample() {
+        arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+    }
+
+    public void set(int index, int value) {
+        arr[index] = value;
+    }
+
+    public int get(int index) {
+        return arr[index];
+    }
+
+    @Override
+    protected ShallowCloneExample clone() throws CloneNotSupportedException {
+        return (ShallowCloneExample) super.clone();
+    }
+}
+```
+
+```java
+ShallowCloneExample e1 = new ShallowCloneExample();
+ShallowCloneExample e2 = null;
+try {
+    e2 = e1.clone();
+} catch (CloneNotSupportedException e) {
+    e.printStackTrace();
+}
+e1.set(2, 222);
+System.out.println(e2.get(2)); // 222
+```
+
+**2. Deep Copy**
+When we do a copy of some entity to create two or more than two entities such that **changes in one entity are not reflected in the other entities**, then we can say we have done a deep copy.
+
+```java
+public class DeepCloneExample implements Cloneable {
+
+    private int[] arr;
+
+    public DeepCloneExample() {
+        arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+    }
+
+    public void set(int index, int value) {
+        arr[index] = value;
+    }
+
+    public int get(int index) {
+        return arr[index];
+    }
+
+    @Override
+    protected DeepCloneExample clone() throws CloneNotSupportedException {
+        DeepCloneExample result = (DeepCloneExample) super.clone();
+        result.arr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result.arr[i] = arr[i];
+        }
+        return result;
+    }
+}
+
+```
+
+```java
+DeepCloneExample e1 = new DeepCloneExample();
+DeepCloneExample e2 = null;
+try {
+    e2 = e1.clone();
+} catch (CloneNotSupportedException e) {
+    e.printStackTrace();
+}
+e1.set(2, 222);
+System.out.println(e2.get(2)); // 2
+```
