@@ -19,6 +19,18 @@
     - [hashcode()](#hashcode)
     - [toString()](#tostring)
     - [clone()](#clone)
+  - [4. String](#string)
+    - [Benefit of immutable](#benefit-of-immutable)
+    - [Comparsion & String pool](#string-comparsion--string-pool)
+    - [new String()](#new-string)
+    - [String, StringBuffer, StringBuilder](#string-stringbuffer-stringbuilder)
+  - [5. Keywords](#keywords)
+    - [final](#final)
+    - [static](#static)
+  - [6. Exception Handling](#exception-handling)
+    - [try, catch, finally](#try-catch-finally)
+    - [throw, throws](#throw-throws)
+    - [Custom Exceptions](#custom-exception)
 
 ## 1. Fundamental
 
@@ -542,4 +554,256 @@ try {
 }
 e1.set(2, 222);
 System.out.println(e2.get(2)); // 2
+```
+
+## String
+
+### What is String?
+
+Strings are immutable.
+Can be stored with char[].
+
+```java
+public final class String
+    implements java.io.Serializable, Comparable<String>, CharSequence {
+    /** The value is used for character storage. */
+    private final char value[];
+}
+```
+
+- In java 9 and beyond string can be stored with byte and use `coder` to identify of the encoding used to encode the bytes.
+
+### Benefit of immutable
+
+**1. Can cache hash values**
+E.g using String as a Hashmap key. So the hashcode will not change, which only one time calculation is needed.
+
+**2. To be used by string pool**
+If a String has been created, a reference will be obtained from the String Pool. Using String Pool is only possible if String is immutable.
+
+**3. Thread Safety**
+
+### String comparsion & String pool
+
+**1. String Pool**
+String pool is a storage space in the java heap memory where string literals are stored.
+
+We can use String `intern()` to add the literal to the string pool.
+
+```java
+String s1 = new String("aaa");
+String s2 = new String("aaa");
+System.out.println(s1 == s2);           // false
+String s3 = s1.intern();
+String s4 = s2.intern();
+System.out.println(s3 == s4);           // true
+```
+
+intern() first puts "aaa" into the String Pool and then returns the string reference, so s3 and s4 refer to the same string.
+
+**2. String Comparsion**
+
+**_1. equals()_**
+equals() method compares the original content of the string. It compares values of string for equality.
+
+```java
+public boolean equals(Object another) //compares this string to the specified object.
+
+public boolean equalsIgnoreCase(String another) //compares this string to another string, ignoring case.
+```
+
+**_2. == operator_**
+The == operator compares references not values.
+
+```java
+class Teststringcomparison3{
+ public static void main(String args[]){
+   String s1="Sachin";
+   String s2="Sachin";
+   String s3=new String("Sachin");
+   System.out.println(s1==s2);//true (because both refer to same instance)
+   System.out.println(s1==s3);//false(because s3 refers to instance created in nonpool)
+ }
+}
+```
+
+**_3. compareTo()_**
+Compares values lexicographically and returns an integer value that describes if first string is less than, equal to or greater than second string.
+
+s1 == s2 : The method returns 0.
+s1 > s2 : The method returns a positive value.
+s1 < s2 : The method returns a negative value.
+
+```java
+class Teststringcomparison4{
+ public static void main(String args[]){
+   String s1="Sachin";
+   String s2="Sachin";
+   String s3="Ratan";
+   System.out.println(s1.compareTo(s2));//0
+   System.out.println(s1.compareTo(s3));//1(because s1>s3)
+   System.out.println(s3.compareTo(s1));//-1(because s3 < s1 )
+ }
+}
+```
+
+### new String()
+
+E.g(`new String(abc)`)
+2 reference will be created (let say that in the pool we did not have "abc" before)
+
+- "abc" is a string literal, so a string object will be created in the String Pool during compilation pointing to "abc" literal.
+- `new` will create a string object in the heap.
+
+### String, StringBuffer, StringBuilder
+
+**1. Immutation**
+
+- String is immutable
+- StringBuffer & StringBuilder is mutable
+
+**2. Thread Safety**
+
+- String is immutable, thus it is thread safety
+- StringBuilder is **not** thread safe (StringBuilder is more efficient than StringBuffer.)
+- StringBuffer is thread safe. Uses synchronized internally.(means two threads can't call the methods of StringBuffer simultaneously.)
+
+**3. Concatenation & Substring**
+
+Concatenation using `+`
+
+```java
+String s = "a" + "1";
+```
+
+Compiler transfrom above to
+
+```java
+String s=(new StringBuilder()).append("a").append("1").toString();
+```
+
+Substring
+
+```java
+String s="hello";
+System.out.println(s.substring(0,2)); //returns he  as a substring
+```
+
+## Keywords
+
+### final
+
+**1. final values**
+
+- value of final cannot be changed
+- the object refering to final can be changed
+
+```java
+final int x = 1;
+// x = 2;  // cannot assign value to final variable 'x'
+final A y = new A();
+y.a = 1; // can change y.a
+```
+
+**2. final methods**
+
+- final values cannot be override by subclasses
+
+**3. final classes**
+
+- final classes cannot be inherted or extended.
+
+### static
+
+**1. static variable**
+
+- static variables are the variables shared by class, can be accessed by class object.
+
+```java
+public class A {
+
+    private int x;         // instance var
+    private static int y;  // static var
+
+    public static void main(String[] args) {
+        // int x = A.x;  // Non-static field 'x' cannot be referenced from a static context
+        A a = new A();
+        int x = a.x;
+        int y = A.y;
+    }
+}
+```
+
+**2. static methods**
+
+- Static methods exist when the class is loaded and do not depend on any instance. So the static method must have an implementation, which means it cannot be an abstract method.
+
+```java
+public abstract class A {
+    public static void func1(){
+    }
+    // public abstract static void func2();  // Illegal combination of modifiers: 'abstract' and 'static'
+}
+```
+
+You can only access static fields and static methods of the class you belong to. The this and super keywords cannot be included in the method because these two keywords are associated with specific objects.
+
+```java
+public class A {
+
+    private static int x;
+    private int y;
+
+    public static void func1(){
+        int a = x;
+        // int b = y;  // Non-static field 'y' cannot be referenced from a static context
+        // int b = this.y;     // 'A.this' cannot be referenced from a static context
+    }
+}
+```
+
+**3. static block**
+
+- static block is run at initialization
+
+## Exception Handling
+
+Object can be throwable, and there are two types
+
+1. Error
+
+- StackOverflowError, OutOfMemeoryError, LinkageError etc.
+
+2. Exceptions
+
+- Checked Exception: Can use try-catch block to capture the exception and restore.
+- Unchecked Exception: Compile error, cannot be restored
+
+### try, catch, finally
+
+```java
+try{
+// code that may throw an exception
+} catch {
+// what to do when exception occur
+} finally {
+  // finally block is always executed
+}
+```
+
+### Throw, Throws
+
+- **Throw** is used to throw an exception in the code, inside of a function or block
+- **Throws** is used to declare an exception which might be thrown by the function
+
+### Custom exception
+
+Extends `Exception` class
+
+```java
+public class WrongFileNameException extends Exception {
+    public WrongFileNameException(String errorMessage) {
+    super(errorMessage);
+    }
+}
 ```
