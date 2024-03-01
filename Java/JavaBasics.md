@@ -1,7 +1,6 @@
 # Java Basics
 
 - [Java Basics](#java-basics)
-
   - [1. Fundamental](#1-fundamental)
     - [JDK, JRE and JVM](#jdk-jre-and-jvm)
     - [Java Variables](#java-variables)
