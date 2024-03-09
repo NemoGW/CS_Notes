@@ -1,0 +1,122 @@
+# Leetcode 443. String Compression
+
+## Link to the questions
+
+[Leetcode 443. String Compression](https://leetcode.com/problems/string-compression/description/?envType=study-plan-v2&envId=leetcode-75)
+
+## Question description
+
+Given an array of characters chars, compress it using the following algorithm:
+
+Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+- If the group's length is 1, append the character to s.
+- Otherwise, append the character followed by the group's length.
+
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+
+After you are done modifying the input array, return the new length of the array.
+
+You must write an algorithm that uses only constant extra space.
+
+```
+Example 1:
+    Input: chars = ["a","a","b","b","c","c","c"]
+    Output: Return 6, and the first 6 characters of the input array should be: ["a","2","b","2","c","3"]
+    Explanation: The groups are "aa", "bb", and "ccc". This compresses to "a2b2c3".
+
+Example 2:
+    Input: chars = ["a"]
+    Output: Return 1, and the first character of the input array should be: ["a"]
+    Explanation: The only group is "a", which remains uncompressed since it's a single character.
+
+Example 3:
+    Input: chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+    Output: Return 4, and the first 4 characters of the input array should be: ["a","b","1","2"].
+    Explanation: The groups are "a" and "bbbbbbbbbbbb". This compresses to "ab12".
+```
+
+Constraints:
+
+- 1 <= chars.length <= 2000
+- chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol.
+
+## Problem solving thought process
+
+The problem wanted to be solved in-place of the chars array. Which makes this question alot harder.
+
+3 pointers to consider.
+
+1. pointer at current position.
+2. pointer that counts the number of same letters comparing to pointer 1.
+3. pointer that will modify the array.
+
+so it will be some thing like this.
+
+```java
+int ans = 0;//pointer 3 which will be use to modify the array.
+
+//i = pointer 1 which will iterate through the array.
+for(int i=0; i<size;){
+    int count = 0; // pointer 2 - count pointer
+    char letter = chars[i]; // current character
+
+    //update count and i pointer;
+    while(i<size && chars[i] = letter){
+        count++;
+        i++;
+    }
+
+    //i pointer ends at where the character is different
+    //so modify the array now.
+    char[ans] = letter;
+    ans++; //increment pointer3 to futher update the array
+
+    if(count>1){
+
+        //make numbers > 10 to be "1", "0"
+        for(c : count to character array){
+            char[ans] = c;
+            ans++;
+        }
+    }
+}
+```
+
+## Code and Explanation
+
+```java
+class Solution {
+    public int compress(char[] chars) {
+        int ans = 0;
+
+        for(int i=0; i<chars.length;){
+            int count = 0;
+            char letter = chars[i];
+
+            while(i<chars.length && chars[i] == letter){
+                i++;
+                count++;
+            }
+
+            chars[ans] = letter;
+            ans++;
+
+            if(count > 1){
+                for(char c : String.valueOf(count).toCharArray()){
+                    chars[ans] = c;
+                    ans++;
+                }
+            }
+
+        }
+
+        return ans;
+    }
+}
+
+```
+
+Complexity:
+Time - O(n);
+Space - O(1);
