@@ -1,8 +1,8 @@
 # JavaScript Basics
-    -[Variable](#variable)
-        -[Datatypes](#datatypes)
-        -[Operators](#special-operators)
-    -[Event](#event)
+-[Variable](#variable)
+    -[Datatypes](#datatypes)
+    -[Operators](#special-operators)
+-[Event](#event)
 
 ## Variable
 JavaScript variables can be declared using `let` or `var` or `const`.
