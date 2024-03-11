@@ -158,7 +158,7 @@ typeof "John Doe"; // Returns "string"
 
 **CommonHTML Events**
 |Event|Description|
-|:--:|:--:|
+|:--: |:--: |
 |onchange|An HTML element has been changed|
 |onclick|The user clicks an HTML element|
 |onmouseover|The user moves the mouse over an HTML element|
@@ -166,4 +166,38 @@ typeof "John Doe"; // Returns "string"
 |onkeydown|The user pushes a keyboard key|
 |onload|The browser has finished loading the page|
 
-## Array
+## Loops
+
+### For In
+
+The JavaScript for in statement loops through the properties of an Object:
+
+```javascript
+for (key in object) {
+  // code block to be executed
+}
+```
+
+```javascript
+const person = { fname: "John", lname: "Doe", age: 25 };
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+}
+```
+
+### For Of
+
+The JavaScript for of statement loops through the values of an iterable object.
+
+It lets you loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more:
+
+```javascript
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+```
