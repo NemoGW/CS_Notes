@@ -141,3 +141,30 @@ A graph is a collection of nodes (vertices) and edges connecting some pairs of n
 
 - Directed Graph: A graph where the edges have a direction, indicating the relationship flows from one vertex to another.
 - Undirected Graph: A graph where the edges do not have a direction, indicating a two-way relationship.
+
+**Question: Static vs. Instance Methods in Java**
+
+- Static Methods: Belong to the class rather than any specific instance of the class and can be called without creating an instance of the class. Static methods are used for operations that don't require data from an instance of the class. They are marked with the static keyword.
+- Instance Methods: Belong to an instance of a class. They can manipulate the instance variables of the object to which they belong. Instance methods can access static methods and static variables directly.
+
+**Question: Functional Interfaces in Java 8**
+
+- A functional interface in Java is an interface that contains exactly one abstract method, allowing it to be used for lambda expressions and method references. Java 8 annotates these interfaces with @FunctionalInterface annotation to ensure they meet the criteria.
+
+**Question: TreeMap vs. HashMap**
+
+- HashMap: Provides constant-time performance for basic operations (get and put), assuming the hash function disperses elements properly among the buckets. It does not guarantee any order of the map elements.
+- TreeMap: Implements the NavigableMap interface and guarantees that the elements will be in ascending key order. It provides O(log n) time cost for the containsKey, get, put, and remove operations.
+
+- Use HashMap when order is not important and you need efficient access to elements. Use TreeMap when you need sorted order for keys.
+
+**Questions: Generics in Collections**
+
+- Generics provide a way to ensure type safety in collections by allowing you to specify the type of elements stored in a collection. This prevents runtime errors by catching type mismatches at compile time.
+
+**Questions: Thread vs. Runnable**
+
+- Thread: Extending the Thread class means your class cannot extend any other class, as Java doesn't support multiple inheritance.
+- Runnable: Implementing the Runnable interface is more flexible as it allows your class to extend another class.
+
+**Question: Thread Life Cycle**
