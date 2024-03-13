@@ -168,3 +168,81 @@ A graph is a collection of nodes (vertices) and edges connecting some pairs of n
 - Runnable: Implementing the Runnable interface is more flexible as it allows your class to extend another class.
 
 **Question: Thread Life Cycle**
+
+1. New: The thread is created but not yet started.
+2. Runnable: The thread is ready to run and may be running.
+3. Blocked: The thread is blocked waiting for a monitor lock.
+4. Waiting: The thread is waiting indefinitely for another thread to perform a particular action.
+5. Timed Waiting: The thread is waiting for another thread to perform an action for up to a specified waiting time.
+6. Terminated: The thread has exited its run method and is done executing.
+
+**Question: What is the difference between the synchronized method and synchronized block in Java? Provide examples where each would be appropriate.**
+
+- Synchronized Method: Declares an entire method as synchronized, locking on the instance (or class for static methods) for the duration of the method.
+
+```java
+public synchronized void syncMethod() {
+    // code
+}
+
+```
+
+- Synchronized Block: Allows more precise control over the lock object and scope.
+
+```java
+public void someMethod() {
+    synchronized(this) {
+        // code block
+    }
+}
+
+```
+
+**Questions: Explain what a deadlock is in a multithreading context. How can deadlocks be detected and prevented in Java?**
+
+- A deadlock is a situation where two or more threads are blocked forever, each waiting for the other to release a lock. Deadlocks can be prevented by ensuring that locks are always acquired and released in a consistent order and by using timeouts.
+
+**Question: What is a thread pool in Java and why would you use it? How can you implement a simple thread pool using the Executor framework?**
+
+- A thread pool is a collection of reusable threads. Using a thread pool helps to limit the number of threads being created, reduce overhead, and improve application performance. In Java, thread pools can be easily implemented using the Executor framework.
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(10);
+executor.execute(new RunnableTask());
+```
+
+**Question: Explain the purpose of the volatile keyword in Java. How does it affect variable visibility and access in a multithreaded environment?**
+
+- The volatile keyword in Java is used to indicate that a variable's value will be modified by different threads. Declaring a variable volatile ensures that its value is read from and written to main memory, thus ensuring visibility of changes to all threads.
+
+**Question: Compare and contrast ReentrantLock with intrinsic locks obtained via synchronized blocks. When would you use ReentrantLock over synchronized?**
+
+- Intrinsic Locks: Obtained using the `synchronized` keyword. Intrinsic locks are easy to use but offer less flexibility.
+
+- ReentrantLock: Part of the java.util.concurrent.locks package. It offers more flexibility through methods like tryLock(), lockInterruptibly(), and the ability to implement non-block-structured locking disciplines.
+
+- Use ReentrantLock for advanced locking capabilities not available with synchronized.
+
+**Question: Explain the concept of Compare-And-Swap (CAS) and its relevance to atomic variables in Java. How do atomic variables utilize CAS operations?**
+
+- Compare-And-Swap (CAS) is an atomic instruction used for managing concurrency without locks. Atomic variables in Java, such as AtomicInteger, use CAS operations to ensure thread safety by atomically checking and setting values.
+
+**Question: How can threads communicate with each other in a Java program? Discuss the use of `wait()`, `notify()`, and `notifyAll()` methods in the context of thread communication.**
+
+- Threads can communicate with each other using `wait()`, `notify()`, and `notifyAll()` methods. These methods must be called within a synchronized block or method.
+
+- `wait()`: Causes the current thread to wait until another thread invokes
+- `notify()` or `notifyAll()` on the same object.
+- `notify()`: Wakes up one waiting thread chosen at the caller's discretion.
+- `notifyAll()`: Wakes up all threads waiting on the object's monitor.
+
+**Question: What is the Java Memory Model, and why is it important for concurrent programming? How does it define the interaction between threads and memory?**
+
+- The Java Memory Model defines how threads interact through memory and what behaviors are allowed in concurrent execution. It's crucial for understanding the visibility of changes made by one thread to other threads and for writing correct, thread-safe code.
+
+**Question: Concurrent Collections: Explain the advantages of using concurrent collections like ConcurrentHashMap, CopyOnWriteArrayList, and BlockingQueue. How do they differ from their non-concurrent counterparts?**
+Concurrent collections like `ConcurrentHashMap`, `CopyOnWriteArrayList`, and `BlockingQueue` are designed for concurrent access, improving performance and reliability over synchronized collections. They provide thread-safe operations without the need for external synchronization and often use lock stripping and other strategies to allow higher concurrency levels.
+
+- `ConcurrentHashMap`: A thread-safe version of HashMap that allows concurrent access and updates.
+- `CopyOnWriteArrayList`: A thread-safe variant of ArrayList where all mutative operations (add, set, etc.) are implemented by making a fresh copy.
+- `BlockingQueue`: A type of queue that supports operations that wait for the queue to become non-empty when retrieving an element and wait for space to become available in the queue when storing an element.
