@@ -1,22 +1,28 @@
 # JavaScript Basics
+
 - [1. Variable](#variable)
-    - [Datatypes](#datatypes)
-    - [Operators](#special-operators)
+  - [Datatypes](#datatypes)
+  - [Operators](#special-operators)
 - [2. Event](#event)
 
 ## Variable
+
 JavaScript variables can be declared using `let` or `var` or `const`.
 **JavaScript is case sensitive**
 
 1. `var` variables can be restated, and changed.
- - global change
+
+- global change
+
 2. `let` variables cannot be restated, but can be changed.
- - block change
+
+- block change
+
 3. `const` variables cannot be changed.
- - however, const variables property can be updated.
+
+- however, const variables property can be updated.
 
 ```javascript
-
 var hello = "hello1";
 var hello = "hello2";
 hello = "hello3";
@@ -35,21 +41,24 @@ hello = "hello3"; //this is not allowed
 
 //suppose you declare a const with properities. (AKA Object)
 const hello = {
-    id: "1",
-    message: "hello"
-}
+  id: "1",
+  message: "hello",
+};
 
 //this is not allowed
 hello = {
-    id: "2",
-    message: "hello2" 
-}
+  id: "2",
+  message: "hello2",
+};
 
 //can be changed like
 hello.id = "3";
 ```
+
 ### DataTypes
+
 JavaScript has 8 Datatypes
+
 1. String
 2. Number
 3. Bigint
@@ -73,7 +82,7 @@ let x = true;
 let y = false;
 
 // Object:
-const person = {firstName:"John", lastName:"Doe"};
+const person = { firstName: "John", lastName: "Doe" };
 
 // Array object:
 const cars = ["Saab", "Volvo", "BMW"];
@@ -84,6 +93,7 @@ const date = new Date("2022-03-25");
 
 **The Object Datatype**
 The object data type can contain:
+
 1. An object
 2. An array
 3. A date
@@ -91,6 +101,7 @@ The object data type can contain:
 When adding a number to string, JavaScript will treat the number as a string.
 
 E.g.
+
 ```javascript
 let n = 1;
 let hello = hello;
@@ -99,16 +110,19 @@ let message = hello + n; // hello1
 ```
 
 ### Special Operators
+
 **Compare operator**
 
 Use for comparsion
 `===` or `!==`
+
 - these denotes **equal value and equal type**
 
 `==` vs `===`
+
 ```javascript
-var a = [1,2,3];
-var b = [1,2,3];
+var a = [1, 2, 3];
+var b = [1, 2, 3];
 
 var c = { x: 1, y: 2 };
 var d = { x: 1, y: 2 };
@@ -116,33 +130,35 @@ var d = { x: 1, y: 2 };
 var e = "text";
 var f = "te" + "xt";
 
-a == b            // false
-a === b           // false
+a == b; // false
+a === b; // false
 
-c == d            // false
-c === d           // false
+c == d; // false
+c === d; // false
 
-e == f            // true
-e === f           // true
+e == f; // true
+e === f; // true
 
-"abc" == new String("abc")    // true
-"abc" === new String("abc")   // false
+"abc" == new String("abc"); // true
+"abc" === new String("abc"); // false
 ```
 
 **JavaScript Type Operators**
+
 1. typeof - Returns the type of a variable
 2. instanceof - Returns true if an object is an instance of an object type
 
 ```javascript
-typeof ""             // Returns "string"
-typeof "John"         // Returns "string"
-typeof "John Doe"     // Returns "string"
+typeof ""; // Returns "string"
+typeof "John"; // Returns "string"
+typeof "John Doe"; // Returns "string"
 ```
 
 ## Event
+
 **CommonHTML Events**
 |Event|Description|
-|:--:|:--:|
+|:--: |:--: |
 |onchange|An HTML element has been changed|
 |onclick|The user clicks an HTML element|
 |onmouseover|The user moves the mouse over an HTML element|
@@ -150,20 +166,38 @@ typeof "John Doe"     // Returns "string"
 |onkeydown|The user pushes a keyboard key|
 |onload|The browser has finished loading the page|
 
-e.g.
+## Loops
+
+### For In
+
+The JavaScript for in statement loops through the properties of an Object:
+
 ```javascript
-document.querySelector("html").addEventListener("click", function () {
-  alert("dont click");
-});
+for (key in object) {
+  // code block to be executed
+}
 ```
-There are many ways to bind events to elements. 
-The <html> element is selected here, and then its addEventListener() method is called, passing the event name ('click') and its callback function (the function is called when the event occurs) into the function as the calling parameters.
-
-The function we just passed to addEventListener() is called an anonymous function because it has no name. There is another way to write anonymous functions called arrow functions. Arrow functions use () => instead of function ():
 
 ```javascript
-document.querySelector("html").addEventListener("click", () => {
-  alert("dont click");
-});
+const person = { fname: "John", lname: "Doe", age: 25 };
 
+let text = "";
+for (let x in person) {
+  text += person[x];
+}
+```
+
+### For Of
+
+The JavaScript for of statement loops through the values of an iterable object.
+
+It lets you loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more:
+
+```javascript
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
 ```
