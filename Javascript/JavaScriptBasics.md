@@ -149,3 +149,21 @@ typeof "John Doe"     // Returns "string"
 |onmouseout|The user moves the mouse away from an HTML element|
 |onkeydown|The user pushes a keyboard key|
 |onload|The browser has finished loading the page|
+
+e.g.
+```javascript
+document.querySelector("html").addEventListener("click", function () {
+  alert("dont click");
+});
+```
+There are many ways to bind events to elements. 
+The <html> element is selected here, and then its addEventListener() method is called, passing the event name ('click') and its callback function (the function is called when the event occurs) into the function as the calling parameters.
+
+The function we just passed to addEventListener() is called an anonymous function because it has no name. There is another way to write anonymous functions called arrow functions. Arrow functions use () => instead of function ():
+
+```javascript
+document.querySelector("html").addEventListener("click", () => {
+  alert("dont click");
+});
+
+```
